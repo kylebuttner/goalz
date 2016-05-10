@@ -23,7 +23,9 @@
   <div class="tasks-container col-md-2">
     <h3 id="frequency-title">Today<h3>
     <div ng-repeat='goal in controller.goals'>
-      <h4>{{goal.name}}</h4>
+      <!-- <h4>{{goal.name}}</h4> -->
+          <span id="edit-goal" editable-text="goal.name" onaftersave="editGoal(goal)"><h4>{{ goal.name }}</h4></span>
+          <a ng-click="controller.deleteGoal(goal)"><i class="glyphicon glyphicon-remove white"></i></a>
       <div ng-include src="'../partials/_tasks.html'"></div>
     </div>
   </div>

@@ -9,7 +9,7 @@ goalbusterApp.controller('GoalsController', ['GoalsService', function(GoalsServi
   self.addNewGoal = function(formObj) {
     GoalsService.postGoalToApi(formObj);
     _refreshGoals();
-    self.goalText='';
+    self.goalText="";
   };
 
   self.editGoal = function(goalObj) {
