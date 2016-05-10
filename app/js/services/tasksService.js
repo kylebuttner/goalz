@@ -4,14 +4,20 @@ goalbusterApp.service('TasksService',['TasksFactory', '$http', function(TasksFac
   self = this;
 
   self.getAllFromApi = function(goalId){
-        return $http.get('https://goalbuster-api.herokuapp.com/goals/' + goalId +'/tasks.json')
+    if (!!goalId) {
+        return $http.get('http://localhost:3000/goals/' + goalId +'/tasks.json')
     .then(_handleResponseFromApi);
-  }
+    } else {
+        return $http.get('http://localhost:3000/tasks.json')
+    .then(_handleResponseFromApi);
+    }
+
+    }
 
   self.postTaskToApi = function(data, goalId){
     return $http({
       method: 'POST',
-      url: 'https://goalbuster-api.herokuapp.com/goals/' + goalId + "/tasks",
+      url: 'http://localhost:3000/goals/' + goalId + "/tasks",
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -23,7 +29,7 @@ goalbusterApp.service('TasksService',['TasksFactory', '$http', function(TasksFac
   self.editTaskOnApi = function(data, taskId){
     return $http({
       method: 'PUT',
-      url: 'https://goalbuster-api.herokuapp.com/tasks/' + taskId,
+      url: 'http://localhost:3000/tasks/' + taskId,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -35,7 +41,7 @@ goalbusterApp.service('TasksService',['TasksFactory', '$http', function(TasksFac
   self.deleteTaskOnApi = function(taskId){
     return $http({
       method: 'DELETE',
-      url: 'https://goalbuster-api.herokuapp.com/tasks/' + taskId,
+      url: 'http://localhost:3000/tasks/' + taskId,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -65,3 +71,5 @@ goalbusterApp.service('TasksService',['TasksFactory', '$http', function(TasksFac
 
 // 'http://localhost:3000/goals/goals/'
 //https://goalbuster-api.herokuapp.com
+
+// https://goalbuster-api.herokuapp.com
