@@ -12,7 +12,7 @@ var goalbusterApp = angular.module('goalbusterApp', ['ngRoute', 'xeditable', 'ng
     $stateProvider
       .state("welcome", {
         url: "/",
-        templateUrl: 'views/signUp.html',
+        templateUrl: 'views/home.html',
         data: {
           requireLogin: false
         }
